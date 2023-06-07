@@ -5,7 +5,7 @@ from usages.utils import load_env
 
 load_env()
 
-# openai.organization = os.getenv("ORGANIZATION")
+openai.organization = os.getenv("ORGANIZATION")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 if __name__ == "__main__":
