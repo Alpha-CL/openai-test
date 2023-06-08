@@ -16,9 +16,10 @@ if __name__ == "__main__":
         model_id_list = []
 
         for model in model_list:
+            print(f'================> model: {model}')
             # 是否允许创建模型引擎
             allow_create_engine = model.permission[0].allow_create_engine
-            print(f'================> model: {model.id}, {allow_create_engine}')
+            # print(f'================> model: {model.id}, {allow_create_engine}')
             model_id_list.append(model.id)
             if allow_create_engine:
                 print(f'================> model: {model.permission[0]}')
