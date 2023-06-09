@@ -10,6 +10,7 @@
 |        | `array` | |有题目，上下文等的消息组，更有利于模型生成结果 |
 | suffix | `string` | null |  生成文本的后缀 |
 | max_tokens | `integer` | 16 | 生成文本的长度 |
+| |  | GPT-3.5: [16, 4096] ||
 | temperature | `number` | 1 | 用于控制文本生成的多样性  |
 | top_p | `number` | 1 | 用于控制下一个词的可能性，越低代表越准确 |
 | n | `integer` | 1 | 生成文本的数量 |
