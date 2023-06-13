@@ -1,15 +1,14 @@
 import os
 import openai
 
+from usages.handler import openai_request
 from usages.utils import load_env
 
 load_env()
 CURRENT_DIR = os.getcwd()
 
 openai.organization = os.getenv("ORGANIZATION")
-print(f'================> openai.organization : {openai.organization}')
 openai.api_key = os.getenv("OPENAI_API_KEY")
-print(f'================> openai.api_key : {openai.api_key}')
 
 
 class ImageSize:
@@ -18,10 +17,15 @@ class ImageSize:
     large = '1024x1024'
 
 
-if __name__ == '__main__':
-    response = openai.Image.create(
+def image_creator(
         prompt="柯基狗",
         n=1,
-        size=ImageSize.small
-    )
+        size=ImageSize.small,
+        response_format='url'
+):
+    return openai.Image.create(prompt=prompt, n=n, size=size, response_format=response_format)
+
+
+if __name__ == '__main__':
+    response = openai_request(image_creator, prompt="柯基狗")
     print(f'================> response: {response}')
