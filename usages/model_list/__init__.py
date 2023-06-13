@@ -25,3 +25,5 @@ if __name__ == "__main__":
                 print(f'================> model: {model.permission[0]}')
 
         # print(f'================> model_id_list: {model_id_list}')
+        with open('model_list.json', 'w') as f:
+            json.dump(model_list, f)
