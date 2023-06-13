@@ -24,11 +24,11 @@ def validate_file(file):
 # language 参数对应的 code
 # https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
-def audio_to_text(audio_file):
-    validate_file(audio_file)
+def audio_to_text(file):
+    validate_file(file)
     transcript = openai.Audio.transcribe(
         model='whisper-1',
-        file=audio_file,
+        file=file,
         # temperature=0,  # [0,1]
         # response_format='json',  # json, text, srt
         # language='zh',  # zh, en, ...
@@ -38,5 +38,5 @@ def audio_to_text(audio_file):
 
 
 if __name__ == '__main__':
-    response = openai_request(audio_to_text, audio)
+    response = openai_request(audio_to_text, file=audio)
     print(f'================> response: {response}')
