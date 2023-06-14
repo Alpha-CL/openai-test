@@ -29,7 +29,7 @@ def image_creator(
         size=size,
         response_format=response_format
     )
-    return [item.url for item in response.data if True]
+    return [item.url for item in response.data if response.data]
 
 
 if __name__ == '__main__':
