@@ -25,15 +25,15 @@ def validate_file(file):
 
 def audio_to_text(file):
     if validate_file(file):
-        transcript = openai.Audio.transcribe(
+        response = openai.Audio.transcribe(
             model='whisper-1',
             file=file,
             # temperature=0,  # [0,1]
             # response_format='json',  # json, text, srt
             # language='zh',  # zh, en, ...
         )
-        if hasattr(transcript, 'text'):
-            return traditional_to_simplified(transcript['text'])
+        if hasattr(response, 'text'):
+            return traditional_to_simplified(response['text']) if response else None
     else:
         pass
 

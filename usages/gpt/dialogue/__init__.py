@@ -12,10 +12,10 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def dialogue(messages):
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo-16k",
         messages=messages
     )
-    return response['choices'][0]['message']['content']
+    return response['choices'][0]['message']['content'] if response else None
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ audio = open(f'{CURRENT_DIR}/audio.mp3', 'rb')
 
 
 def audio_translate(file):
-    translate = openai.Audio.translate(
+    response = openai.Audio.translate(
         model='whisper-1',
         file=file,
         # prompt='',  #
@@ -22,7 +22,7 @@ def audio_translate(file):
         # response_format='json',  # json, text, srt
         # language='en',  # zh, en, ...
     )
-    return translate['text']
+    return response['text'] if response else None
 
 
 if __name__ == '__main__':

@@ -25,7 +25,7 @@ def chat(prompt='', n=1):
             max_tokens=1024 * 4 - len(prompt) * 2,
             # stream=True
         )
-        return response.choices[0].text.strip()
+        return response.choices[0].text.strip() if response else None
 
         # for i, result in enumerate(response):
         #     message = result.choices[0].text.strip()
