@@ -11,9 +11,11 @@ def timeout_handler(signum, frame):
     raise TimeoutException()
 
 
-def openai_request(openai_sdk=None, *args, **kwargs):
+def openai_request(openai_sdk=None, timeout=None, *args, **kwargs):
+    print(f'================> openai_request.args: {args}')
     print(f'================> openai_request.kwargs: {kwargs}')
-    timeout = 30  # 定义超时时间
+
+    timeout = timeout or 30  # 定义超时时间
     signal.signal(signal.SIGALRM, timeout_handler)  # 注册信号处理程序
     signal.alarm(timeout)  # 设置超时时间
 

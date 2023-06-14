@@ -22,11 +22,17 @@ def chat(prompt='', n=1):
             engine='text-davinci-003',
             prompt=prompt,
             n=n,
-            max_tokens=4080
+            max_tokens=1024 * 4 - len(prompt) * 2,
+            # stream=True
         )
         return response.choices[0].text.strip()
 
+        # for i, result in enumerate(response):
+        #     message = result.choices[0].text.strip()
+        #     print(f"Generated message {i + 1}: {message}")
+
 
 if __name__ == "__main__":
-    message = openai_request(chat, prompt='生成100字的小说')
+    message = openai_request(chat, timeout=60, prompt='书写一个灵异小说500字')
     print(f'================> message: {message}')
+    print(f'================> message.length: {len(message)}')
