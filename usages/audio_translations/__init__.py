@@ -22,9 +22,9 @@ def audio_translate(file):
         # response_format='json',  # json, text, srt
         # language='en',  # zh, en, ...
     )
-    return translate
+    return translate['text']
 
 
 if __name__ == '__main__':
-    response = openai_request(audio_translate, file=audio)
-    print(f'================> response: {response}')
+    content = openai_request(audio_translate, file=audio)
+    print(f'================> content: {content}')

@@ -33,11 +33,11 @@ def audio_to_text(file):
             # language='zh',  # zh, en, ...
         )
         if hasattr(transcript, 'text'):
-            return traditional_to_simplified(transcript.text)
+            return traditional_to_simplified(transcript['text'])
     else:
         pass
 
 
 if __name__ == '__main__':
-    response = openai_request(audio_to_text, file=audio)
-    print(f'================> response: {response}')
+    content = openai_request(audio_to_text, file=audio)
+    print(f'================> content: {content}')

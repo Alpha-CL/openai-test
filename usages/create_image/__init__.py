@@ -23,9 +23,15 @@ def image_creator(
         size=ImageSize.small,
         response_format='url'
 ):
-    return openai.Image.create(prompt=prompt, n=n, size=size, response_format=response_format)
+    response = openai.Image.create(
+        prompt=prompt,
+        n=n,
+        size=size,
+        response_format=response_format
+    )
+    return [item.url for item in response.data if True]
 
 
 if __name__ == '__main__':
-    response = openai_request(image_creator, prompt="柯基狗")
-    print(f'================> response: {response}')
+    content = openai_request(image_creator, prompt="柯基狗")
+    print(f'================> content: {content}')
