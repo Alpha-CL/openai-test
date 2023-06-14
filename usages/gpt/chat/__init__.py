@@ -22,9 +22,10 @@ def chat(prompt='', n=1):
             engine='text-davinci-003',
             prompt=prompt,
             n=n,
-            max_tokens=1024 * 4 - len(prompt) * 2,
+            # max_tokens=1024 * 4 - len(prompt) * 2,
             # stream=True
         )
+        print(f'================> response: {response}')
         return response.choices[0].text.strip() if response else None
 
         # for i, result in enumerate(response):
